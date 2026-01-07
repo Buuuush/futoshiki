@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Futoshiki</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-    <script language="javascript" src="liens.js"></script>
-    <meta http-equiv="refrsesh" content="0.001" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <h1>Jeu de Futoshiki</h1>
@@ -16,10 +14,11 @@
     </aside>
     <div class="container">
       <main>
-        <div class="grille">
+        <a href="grille.html">
+        <div class="grille" onclick="grille(1)">
           <h2>Grille 1</h2>
           <p>Niveau Facile</p>
-        </div>
+        </div></a>
         <div class="grille">
           <h2>Grille 2</h2>
           <p>Niveau Facile</p>
