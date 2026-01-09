@@ -1,5 +1,3 @@
-/* Styles spécifiques pour l'affichage de la grille Futoshiki */
-
 .puzzle-grid {
   margin-top: 20px;
   display: flex;
@@ -28,11 +26,6 @@
   outline: none;
 }
 
-.cell[contenteditable="true"] {
-  background-color: #fffbe6;
-  cursor: text;
-  user-select: text;
-}
 
 .cell.prefilled {
   background-color: #eee;
@@ -46,14 +39,12 @@
   font-size: 18px;
 }
 
-.filler {
-}
-
 .controls {
   margin-top: 20px;
   display: flex;
   gap: 10px;
   justify-content: center;
+  
 }
 
 .controls button {

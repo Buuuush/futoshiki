@@ -1,9 +1,5 @@
 document.onselectstart = (e) => e.preventDefault();
 
-function grille(numero) {
-  localStorage.setItem("selectedGridId", String(numero));
-}
-
 function findSign(signs, row, col, orientation) {
   for (let i = 0; i < signs.length; i++) {
     const s = signs[i];
@@ -40,7 +36,6 @@ function validateGrid() {
   const cells = Array.from(gridContainer.querySelectorAll(".cell"));
   const values = [];
 
-  // Construire la matrice des valeurs actuelles
   for (let r = 0; r < size; r++) {
     values[r] = [];
     for (let c = 0; c < size; c++) {
@@ -54,7 +49,6 @@ function validateGrid() {
   let isValid = true;
   let errors = [];
 
-  // Vérifier si toutes les cellules sont remplies
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       if (values[r][c] === null) {
@@ -67,7 +61,6 @@ function validateGrid() {
   }
 
   if (isValid) {
-    // Vérifier les lignes (pas de doublons)
     for (let r = 0; r < size; r++) {
       const seen = new Set();
       for (let c = 0; c < size; c++) {
@@ -83,7 +76,6 @@ function validateGrid() {
   }
 
   if (isValid) {
-    // Vérifier les colonnes (pas de doublons)
     for (let c = 0; c < size; c++) {
       const seen = new Set();
       for (let r = 0; r < size; r++) {
@@ -99,7 +91,6 @@ function validateGrid() {
   }
 
   if (isValid) {
-    // Vérifier les contraintes d'inégalité
     for (const sign of grid.signs) {
       const { row, col, sign: sym, orientation } = sign;
       if (orientation === "h") {
@@ -222,7 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     initPuzzle();
 
-    // Ajouter les gestionnaires pour les boutons
     const validateBtn = document.getElementById("validateBtn");
     const resetBtn = document.getElementById("resetBtn");
 

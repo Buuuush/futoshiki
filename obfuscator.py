@@ -52,31 +52,6 @@ class FileObfuscator:
         
         return js_code
     
-    def obfuscate_css(self, css_code):
-        print("  [CSS] Obfuscation en cours...")
-        css_code = re.sub(r'/\*.*?\*/', '', css_code, flags=re.DOTALL)
-        css_code = re.sub(r'\s+', ' ', css_code)
-        css_code = re.sub(r'\s*([{}:;,])\s*', r'\1', css_code)
-        class_pattern = r'\.([-_a-zA-Z0-9]+)'
-        
-        def replace_class(match):
-            class_name = match.group(1)
-            if class_name not in self.class_mapping:
-                self.class_mapping[class_name] = 'c' + self.generate_random_name(6)
-            return '.' + self.class_mapping[class_name]
-        
-        css_code = re.sub(class_pattern, replace_class, css_code)
-        id_pattern = r'#([-_a-zA-Z0-9]+)'
-        
-        def replace_id(match):
-            id_name = match.group(1)
-            if id_name not in self.id_mapping:
-                self.id_mapping[id_name] = 'i' + self.generate_random_name(6)
-            return '#' + self.id_mapping[id_name]
-        
-        css_code = re.sub(id_pattern, replace_id, css_code)
-        return css_code
-    
     def obfuscate_html(self, html_code):
         print("  [HTML] Obfuscation en cours...")
         html_code = re.sub(r'<!--.*?-->', '', html_code, flags=re.DOTALL)
@@ -138,8 +113,6 @@ class FileObfuscator:
             
             if extension == '.js':
                 obfuscated = self.obfuscate_javascript(content)
-            elif extension == '.css':
-                obfuscated = self.obfuscate_css(content)
             elif extension in ['.html', '.htm']:
                 obfuscated = self.obfuscate_html(content)
             else:
@@ -175,7 +148,7 @@ class FileObfuscator:
         
         print(f"\n📁 Obfuscation du répertoire: {directory_path}")
         
-        supported_extensions = ['.html', '.htm', '.js', '.css']
+        supported_extensions = ['.html', '.htm', '.js']
         files = []
         
         for ext in supported_extensions:
@@ -197,7 +170,7 @@ class FileObfuscator:
 
 def main():
     print("=" * 60)
-    print("🔐 OBFUSCATEUR DE CODE - HTML, JavaScript, CSS")
+    print("🔐 OBFUSCATEUR DE CODE - HTML, JavaScript")
     print("=" * 60)
     
     obfuscator = FileObfuscator()
@@ -207,10 +180,9 @@ def main():
         print(f"  python {sys.argv[0]} <fichier_ou_répertoire>")
         print("\nExemples:")
         print(f"  python {sys.argv[0]} script.js")
-        print(f"  python {sys.argv[0]} style.css")
         print(f"  python {sys.argv[0]} index.html")
         print(f"  python {sys.argv[0]} ./mon_projet/")
-        print("\nExtensions supportées: .html, .htm, .js, .css")
+        print("\nExtensions supportées: .html, .htm, .js")
         return
     
     target = sys.argv[1]

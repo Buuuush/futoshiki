@@ -6,6 +6,12 @@
     <title>Futoshiki</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <script>
+      function autoRefresh() {
+        window.location = window.location.href;
+      }
+      setInterval("autoRefresh()", 30000);
+    </script>
   </head>
   <body>
     <h1>Jeu de Futoshiki</h1>
@@ -14,41 +20,39 @@
     </aside>
     <div class="container">
       <main>
-        <a href="grille.html">
-          <div class="grille" onclick="grille(1)">
-            <h2>Grille 1</h2>
-            <p>Niveau Facile</p>
-          </div></a
-        >
-        <div class="grille">
+        <div class="grille" onclick="grille(1)">
+          <h2>Grille 1</h2>
+          <p>Niveau Facile</p>
+        </div>
+        <div class="grille" onclick="grille(2)">
           <h2>Grille 2</h2>
           <p>Niveau Facile</p>
         </div>
-        <div class="grille">
+        <div class="grille" onclick="grille(3)">
           <h2>Grille 3</h2>
           <p>Niveau Moyen</p>
         </div>
-        <div class="grille">
+        <div class="grille" onclick="grille(4)">
           <h2>Grille 4</h2>
           <p>Niveau Moyen</p>
         </div>
-        <div class="grille">
+        <div class="grille" onclick="grille(5)">
           <h2>Grille 5</h2>
           <p>Niveau Difficile</p>
         </div>
-        <div class="grille">
+        <div class="grille" onclick="grille(6)">
           <h2>Grille 6</h2>
           <p>Niveau Difficile</p>
         </div>
-        <div class="grille">
+        <div class="grille" onclick="grille(7)">
           <h2>Grille 7</h2>
           <p>Niveau Expert</p>
         </div>
-        <div class="grille">
+        <div class="grille" onclick="grille(8)">
           <h2>Grille 8</h2>
           <p>Niveau Expert</p>
         </div>
-        <div class="grille">
+        <div class="grille" onclick="grille(9)">
           <h2>Grille 9</h2>
           <p>Niveau Master</p>
         </div>
